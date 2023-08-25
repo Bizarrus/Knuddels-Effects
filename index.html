@@ -32,10 +32,12 @@
 	<body>
 		<div data-effect="Fire" data-rank="STAMMI">Fire Nickname</div>
 		<div data-effect="VUP" data-rank="STAMMI">VUP Nickname</div>
+		<div data-effect="AngelWings" data-rank="ADMIN">AngelWings Nickname</div>
 		
 		<!-- Include some Effects -->
 		<script src="effects/Fire.class.js"></script>
 		<script src="effects/VUP.class.js"></script>
+		<script src="effects/AngelWings.class.js"></script>
 		
 		<!-- Init -->
 		<script>
@@ -50,6 +52,9 @@
 							break;
 							case 'VUP':
 								Effects.VUP.init(element);
+							break;
+							case 'AngelWings':
+								Effects.AngelWings.init(element);
 							break;
 							default:
 								console.warn('Unknown Effect:', element.dataset.effect);
