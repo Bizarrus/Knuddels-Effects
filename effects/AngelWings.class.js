@@ -12,6 +12,7 @@ window.Effects = window.Effects || {};
 	let _image_right	= null;
 	let _image_start	= 0;
 	let _image_end		= 0;
+	let _factor			= 1; // @ToDo
 	
 	this.init = function init(element) {
 		_element		= element;
@@ -25,20 +26,24 @@ window.Effects = window.Effects || {};
 	};
 	
 	this.changeStyle = function changeStyle() {
-		_style						= getComputedStyle(_element);
-		_metrics					= _context.measureText(_element.innerText);
+		_style					= getComputedStyle(_element);
 		
 		// Calculate Size
 		var span = document.body.appendChild(document.createElement('span'));
-		span.innerHTML = _element.innerText;
-		span.style.position = "absolute";
-		span.style.visibility = "hidden";
-		let rect = span.getBoundingClientRect();
+		span.innerHTML			= _element.innerText;
+		span.style.position		= "absolute";
+		span.style.visibility	= "hidden";
+		span.style.fontSize		= (parseInt(_style.fontSize, 10) * _factor) + 'px ' + _style.fontFamily;
+		let rect				= span.getBoundingClientRect();
+		_style					= getComputedStyle(span);
+		_element.style.font		= (parseInt(_style.fontSize, 10) * _factor) + 'px ' + _style.fontFamily;
+		_metrics				= _context.measureText(_element.innerText);
 		
 		// Style Canvas
 		_canvas.style.position		= 'absolute';
 		_canvas.style.left			= '0px';
 		_canvas.style.top			= '0px';
+		_context.font				= (parseInt(_style.fontSize, 10) * _factor) + 'px ' + _style.fontFamily;
 		_canvas.height				= rect.height + _metrics.actualBoundingBoxAscent + _metrics.actualBoundingBoxDescent;
 		_canvas.width				= rect.width + (_metrics.actualBoundingBoxLeft * 2);
 		_element.style.textShadow	= '-1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF';
@@ -69,10 +74,8 @@ window.Effects = window.Effects || {};
 		
 		_context.shadowColor	= "#FFFFFF";
 		_context.shadowBlur		= 3;
+		_context.font			= (parseInt(_style.fontSize, 10) * _factor) + 'px ' + _style.fontFamily;
 		_context.strokeText(_element.innerText, _image_start, 20);
-		
-		
-		_context.font			= _style.font;
 		_context.fillStyle		= _style.color;
 		_context.fillText(_element.innerText, _image_start, 20);
 		
