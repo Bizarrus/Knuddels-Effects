@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>FirePainter</title>
+	</head>
+	<body>
+		<div data-effect="fire">Nickname</div>
+		
+		<!-- Include some Effects -->
+		<script src="effects/fire.class.js"></script>
+		
+		<!-- Init -->
+		<script>
+			(function EffectsHandler() {
+				this.__constructor = function __constructor() {
+					console.log('Init Effects,..');
+					
+					[].map.call(document.querySelectorAll('[data-effect]'), function onElement(element) {
+						switch(element.dataset.effect) {
+							case 'fire':
+								Effects.Fire.init(element);
+							break;
+							default:
+								console.warn('Unknown Effect:', element.dataset.effect);
+							break;
+						}
+					});
+				};
+				
+				this.__constructor.apply(this, arguments);
+			}());
+		</script>
+	</body>
+</html>
