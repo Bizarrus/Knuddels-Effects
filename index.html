@@ -2,9 +2,31 @@
 <html>
 	<head>
 		<title>FirePainter</title>
+		<style>
+			body {
+				font-family: Arial;
+				background: #444444;
+			}
+			
+			[data-rank="NEWBIE"] {
+				color: #FFFFFF;
+			}
+			
+			[data-rank="FAMILY"] {
+				color: #0000FA;
+			}
+			
+			[data-rank="STAMMI"] {
+				color: #00FA00;
+			}
+			
+			[data-rank="ADMIN"] {
+				color: #FA0000;
+			}
+		</style>
 	</head>
 	<body>
-		<div data-effect="fire">Nickname</div>
+		<div data-effect="fire" data-rank="STAMMI">FireNicknameStammi</div>
 		
 		<!-- Include some Effects -->
 		<script src="effects/fire.class.js"></script>
