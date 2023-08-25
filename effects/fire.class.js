@@ -1,6 +1,6 @@
 'use strict';
 
-let Effects = {} || Effects;
+window.Effects = window.Effects || {};
 
 (new function Fire() {
 	let _width			= -1;
@@ -229,5 +229,5 @@ let Effects = {} || Effects;
 		}
 	};
 
-	Effects.Fire = this;
+	window.Effects.Fire = this;
 }());

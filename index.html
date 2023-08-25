@@ -8,6 +8,10 @@
 				background: #444444;
 			}
 			
+			div {
+				padding: 3px 5px;
+			}
+			
 			[data-rank="NEWBIE"] {
 				color: #FFFFFF;
 			}
@@ -26,10 +30,12 @@
 		</style>
 	</head>
 	<body>
-		<div data-effect="fire" data-rank="STAMMI">Fire Nickname</div>
+		<div data-effect="Fire" data-rank="STAMMI">Fire Nickname</div>
+		<div data-effect="VUP" data-rank="STAMMI">VUP Nickname</div>
 		
 		<!-- Include some Effects -->
-		<script src="effects/fire.class.js"></script>
+		<script src="effects/Fire.class.js"></script>
+		<script src="effects/VUP.class.js"></script>
 		
 		<!-- Init -->
 		<script>
@@ -39,8 +45,11 @@
 					
 					[].map.call(document.querySelectorAll('[data-effect]'), function onElement(element) {
 						switch(element.dataset.effect) {
-							case 'fire':
+							case 'Fire':
 								Effects.Fire.init(element);
+							break;
+							case 'VUP':
+								Effects.VUP.init(element);
 							break;
 							default:
 								console.warn('Unknown Effect:', element.dataset.effect);
