@@ -31,8 +31,9 @@ window.Effects = window.Effects || {};
 		// Calculate Size
 		var span = document.body.appendChild(document.createElement('span'));
 		span.innerHTML			= _element.innerText;
-		span.style.position		= "absolute";
-		span.style.visibility	= "hidden";
+		span.style.position		= 'absolute';
+		span.style.visibility	= 'hidden';
+		span.style.color		= _style.color;
 		span.style.fontSize		= (parseInt(_style.fontSize, 10) * _factor) + 'px ' + _style.fontFamily;
 		let rect				= span.getBoundingClientRect();
 		_style					= getComputedStyle(span);
@@ -72,8 +73,8 @@ window.Effects = window.Effects || {};
 	this.repaint = function repaint() {
 		_context.clearRect(0, 0, _canvas.width, _canvas.height);
 		
-		_context.shadowColor	= "#FFFFFF";
-		_context.shadowBlur		= 3;
+		_context.shadowColor	= '#FFFFFF';
+		_context.shadowBlur		= 4;
 		_context.font			= (parseInt(_style.fontSize, 10) * _factor) + 'px ' + _style.fontFamily;
 		_context.strokeText(_element.innerText, _image_start, 20);
 		_context.fillStyle		= _style.color;
